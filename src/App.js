@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import "../node_modules/mdbootstrap/css/mdb.css";
+import Navbar from "./Components/NavBar/Navbar";
+import { HttpContextProvider } from "./Components/Context/HttpContext";
+import Repository from "./Components/UserDetails/Repository";
+import ProfileDetails from "./Components/UserDetails/ProfileDetails";
+import Profile from "./Components/UserDetails/Profile";
+import fetchUserContext from "./Components/Context/HttpContext";
 
 function App() {
+  const ctx = useContext(fetchUserContext);
+  console.log(Object.keys(ctx.userDetails).length);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HttpContextProvider>
+      <Navbar />
+
+      {Object.keys(ctx.userDetails).length === 0 && (
+        <div className="container mt-3">
+          <div className="row">
+            <div className="col-md-3">
+              <Profile />
+            </div>
+            <div className="col-md-9">
+              <ProfileDetails />
+            </div>
+          </div>
+        </div>
+      )}
+      <div className="container mt-3">
+        <section className="row ">
+          <div className="col">
+            <Repository />
+          </div>
+        </section>
+      </div>
+    </HttpContextProvider>
   );
 }
 
