@@ -12,12 +12,12 @@ import fetchUserContext from "./Components/Context/HttpContext";
 
 function App() {
   const ctx = useContext(fetchUserContext);
-  console.log(Object.keys(ctx.userDetails).length);
+
   return (
     <HttpContextProvider>
       <Navbar />
 
-      {Object.keys(ctx.userDetails).length === 0 && (
+   
         <div className="container mt-3">
           <div className="row">
             <div className="col-md-3">
@@ -28,7 +28,7 @@ function App() {
             </div>
           </div>
         </div>
-      )}
+
       <div className="container mt-3">
         <section className="row ">
           <div className="col">

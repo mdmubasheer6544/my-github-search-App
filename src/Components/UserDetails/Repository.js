@@ -3,7 +3,7 @@ import fetchUserContext from "../Context/HttpContext";
 
 const Repository = () => {
   const reposCtx = useContext(fetchUserContext).userRepos;
-  console.log(reposCtx);
+
   return (
     <>
       <div className="card">
@@ -13,7 +13,7 @@ const Repository = () => {
         <div className="card-body">
           <ul className="list-group">
             {reposCtx.map((u) => {return(
-                <li className="list-group-item">
+                <li className="list-group-item" key={u.id}>
                 <div className="d-flex justify-content-between align-items-center">
                   <a href={u.html_url} >{u.html_url}</a>
                   <span className="badge badge-success">{u.starred_url}</span>

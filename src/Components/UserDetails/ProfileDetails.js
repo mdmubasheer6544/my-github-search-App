@@ -3,7 +3,7 @@ import fetchUserContext from '../Context/HttpContext';
 
 const ProfileDetails = () => {
     const httpCtx = useContext(fetchUserContext).userDetails;
-    console.log(httpCtx);
+ 
     return (
         <>
         <div className="card">
